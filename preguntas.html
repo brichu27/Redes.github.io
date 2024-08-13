@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset=“UTF-8” />
+    <title>BRISA PAEZ REDES</title>
+
+</head>
+
+<body>
+    
+    <h1>PROGRAMACIÓN EN AMBIENTE DE REDES</h1>
+
+    <hr> 
+
+    <h3>Preguntas del TP1</h3>
+
+    <ol>
+
+        <li>¿Plantear un caso de uso de encriptación unidireccional</li>
+        <li>¿Cuáles son las ventajas y las desventajas de la encriptación simétrica? </li>
+        <li>¿Como encriptaríamos para obtener confidencialidad en la transferencia de datos?</li>
+        <li>¿Como encriptaríamos para autenticar un documento usando firma electrónica?</li>
+        <li>¿Que tipo de encriptación se usa en la WEB?</li>
+
+    </ol>
+
+    <h3>Respuestas:</h3>
+
+    <ol>
+        <li> Se plantearon dos casos:
+        <ul>
+            <li>Un documento puede ser enviado por un medio de comunicación y su hash calculado por otro medio de comunicación diferente. En el destino se calcula nuevamente el hash del documento recibido y se lo compara con el hash transferido por el otro medio. Si coinciden queda garantizada la autenticidad del documento.</li>
+            <li>Una contraseña de usuario que inicia una sesión con una aplicación es transformada en su hash al llegar. Este hash es comparado con otro almacenado en disco del lado del servicio. Si la contraseña encriptada coincide con el hash almacenado se estaría autenticando al mismo</li>
+        </ul>
+        </li> 
+        <br>
+        <li>La encriptación simétrica es rápida y eficiente, ideal para encriptar grandes volúmenes de datos y en aplicaciones en tiempo real, además de ser más simple de implementar y consumir menos recursos. Sin embargo, presenta desafíos significativos en la gestión y distribución segura de claves, siendo compleja en entornos grandes y escalables. La seguridad del sistema depende completamente de la protección de la clave, y si esta es comprometida, todos los datos encriptados con ella estarán en riesgo. Además, no proporciona autenticación, por lo que se necesita un mecanismo adicional para garantizar la legitimidad de los mensajes.</li>
+        <br>
+        <li>Utilizariamos la criptografía bidireccional asimétrica. Se basa en la encriptación de un mensaje con una clave y la des-encriptación con otra diferente. Una de dichas claves (cualquiera de ellas debe ser privada y la otra pública). Si se encripta con la clave pública del receptor para que este a su vez desencripte con su privada se logra confidencialidad.</li>
+        <br>
+        <li>Hash encriptado con clave RSA privada del emisor: Usando esta firma se garantiza autenticidad del documento. La firma es el producto encriptado asimétricamente con privada del origen del hash md5 del documento (no de todo el documento). Cualquier software de firma electrónica tiene previamente definidos y disponibles la Clave privada (.key) y la clave pública firmada por CA (.cert) Si en el medio alguien extrae el documento y lo modifica, jamas va a poder generar una una firma compatible con la firma original ya que no dispone de la key privada original.</li>
+        <br>
+        <li>dsp la copio</li>
+    </ol>
+
+    <hr>
+
+    <h3>Preguntas del TP2</h3>
+
+    <ol>
+
+        <li>¿Sobre que protocolo binario está montado el protocolo HTTP?</li>
+        <li>¿Cuáles son los clientes http y los servidores http mas utilizados? </li>
+        <li>¿Que verbos admite un comando en el requerimiento HTTP?</li>
+        <li>¿Que contenido lleva el body de un requerimiento HTTP?</li>
+        <li>¿Que diferencia existe entre un URL y un URI?</li>
+        <li>¿Como se almacena información relacionada con las respuestas http?</li>
+        <li>¿Que significa Virtual hosting? </li>
+        <li>¿Porque el HTTP se considera STATE LESS?</li>
+        <li>¿Que nueva version de HTTP se está usando para mejorar la velocidad de la WEB?</li>
+        <li>¿Como va a mejorar el comportamiento de una aplicación WEB en ambientes ruidosos o de débil conexión?</li>
+
+    </ol>
+
+    <h3>Respuestas:</h3>
+
+    <ol>
+        <li>El protocolo HTTP está montado sobre el protocolo TCP/IP (Transmission Control Protocol/Internet Protocol). TCP proporciona una conexión fiable y orientada a la conexión para el intercambio de datos.</li>
+        <br>
+        <li> 
+            <ul>
+                <li>Clientes HTTP más utilizados:</li>
+                <li>Servidores HTTP más utilizados:</li>
+            </ul>
+        </li>
+        <br>
+        <li> Los metodos pueden ser utilizados como verbos para la manipulación de recursos remotos en servicios web
+            <ul>
+                <li>GET  Solo lectura</li>
+                <li>PUT  Utilizado para crear recursos en un servidor</li>
+                <li>DELETE  Utilizado para borrar recursos en un servidor</li>
+                <li>POST Utilizado normalmente para actualizar recursos en un servidor</li>
+            </ul>
+        </li>
+        <br>
+        <li> El body puede contener datos en cualquier formato.
+            <ul>
+                <li>Datos ingresados en campos de un formulario</li>
+                <li>Files enviados en un proceso de upload</li>
+            </ul>
+        </li>
+        <br>
+        <li> Los dos identifican pero uno localiza.
+            <ul>
+                <li>URI (Uniform Resource Identifier): Es un identificador genérico que puede referirse a un recurso en Internet. Incluye URLs</li>
+                <li>URL (Uniform Resource Locator): Es un tipo específico de URI que, además de identificar un recurso, proporciona los medios para localizarlo (por ejemplo, mediante una dirección web).</li>
+            </ul>
+        </li>
+        <br>
+        <li> La respuesta HTTP contiene:
+            <ul>
+                <li>Headers</li>
+                <li>Cookies</li>
+                <li>Cache</li>
+            </ul>
+        </li>
+        <br>
+        <li>virtual hosts</li>
+        <br>
+        <li>HTTP se considera Stateless ya que esto significa que no tiene estado, que es muy difícil mantener el estado de una aplicación cuando luego de una sucesiva cantidad de mensajes de requerimientos y respuestas, se termina cortando la conexión. Es por eso que es difícil mantener el estado.</li>
+        <br>
+        <li>La versión más reciente es HTTP/3, que introduce varias mejoras de rendimiento sobre HTTP/2, utilizando el protocolo QUIC (Quick UDP Internet Connections) en lugar de TCP, lo que reduce la latencia y mejora la velocidad de conexión. TCP es un protocolo orientado a conexión que se asegura de que los datos llegan sin errores al destino. En cambio, el protocolo UDP es un protocolo de transporte que se usa para comunicaciones rápidas, sin establecer conexión sin errores.</li>
+        <br>
+        <li>En ambientes con mucho ruido electromagnético, las conexiones largas producen gran cantidad de paquetes repetidos por falta de confirmación por parte de los receptores, esto se traduce en grandes retardos en la transmisión de datos. Quic produce conexiones UDP mucho mas cortas, eficientes y de facil establecimiento, ideales para la transmisión de las partes constitutivas de un documento HTML.</li>
+    </ol>
+
+</body>
+
+</html>
